@@ -1,0 +1,79 @@
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import java.util.Random
+
+// توليد بيانات عشوائية
+Random rand = new Random()
+int randomNumber = rand.nextInt(10000) + 1
+
+String username = "testuser" + randomNumber
+String email = "testuser" + randomNumber + "@gmail.com"
+String password = "123456"
+String wrongPassword = "wrong123"
+
+// فتح المتصفح
+WebUI.openBrowser('')
+WebUI.maximizeWindow()
+
+// الانتقال إلى صفحة التسجيل
+WebUI.navigateToUrl('http://localhost:5000/register')
+
+// تسجيل مستخدم جديد
+WebUI.comment("🔹 تسجيل مستخدم جديد: " + username)
+WebUI.setText(findTestObject('register/Page_Sign up  Instagram/input_Instagram_username'), username)
+WebUI.setText(findTestObject('register/Page_Sign up  Instagram/input_Instagram_email'), email)
+WebUI.setText(findTestObject('register/Page_Sign up  Instagram/input_Instagram_password'), password)
+WebUI.click(findTestObject('register/Page_Sign up  Instagram/input_submit'))
+
+WebUI.delay(2)
+
+// محاولة تسجيل دخول خاطئة
+WebUI.comment("🔹 محاولة تسجيل دخول خاطئة باستخدام الإيميل الصحيح وكلمة مرور خاطئة")
+WebUI.setText(findTestObject('register/Page_Login  Instagram/input_Instagram_email'), email)
+WebUI.setText(findTestObject('register/Page_Login  Instagram/input_Instagram_password'), wrongPassword)
+WebUI.click(findTestObject('register/Page_Login  Instagram/input_submit'))
+
+WebUI.verifyElementPresent(findTestObject('register/Page_Login  Instagram/input_submit'), 5, FailureHandling.STOP_ON_FAILURE)
+WebUI.delay(2)
+
+// محاولة تسجيل دخول صحيحة
+WebUI.comment("🔹 تسجيل دخول باستخدام البيانات الصحيحة")
+WebUI.setText(findTestObject('register/Page_Login  Instagram/input_Instagram_email'), email)
+WebUI.setText(findTestObject('register/Page_Login  Instagram/input_Instagram_password'), password)
+WebUI.click(findTestObject('register/Page_Login  Instagram/input_submit'))
+
+WebUI.verifyElementPresent(findTestObject('register/Page_Home  Instagram/a_Logout'), 5, FailureHandling.STOP_ON_FAILURE)
+WebUI.delay(2)
+
+// تنفيذ إعجاب
+WebUI.comment('🔹 عمل إعجاب')
+WebUI.click(findTestObject('register/Page_Home  Instagram/input_submit'))
+WebUI.delay(1)
+
+// إزالة الإعجاب
+WebUI.comment('🔹 إزالة الإعجاب')
+WebUI.click(findTestObject('register/Page_Home  Instagram/input_submit'))
+WebUI.delay(1)
+
+// إعادة الإعجاب مرة أخرى
+WebUI.comment('🔹 إعادة الإعجاب')
+WebUI.click(findTestObject('register/Page_Home  Instagram/input_submit'))
+WebUI.delay(1)
+
+// كتابة تعليق
+WebUI.comment('🔹 كتابة تعليق')
+WebUI.setText(findTestObject('register/Page_Home  Instagram/input_dd_comment_text'), 'Nice photo!')
+WebUI.click(findTestObject('register/Page_Home  Instagram/input_submit_1'))
+
+WebUI.delay(2)
+
+// تسجيل الخروج
+WebUI.comment('🔹 تسجيل خروج')
+WebUI.click(findTestObject('register/Page_Home  Instagram/a_Logout'))
+
+WebUI.verifyElementPresent(findTestObject('register/Page_Login  Instagram/input_submit'), 5, FailureHandling.STOP_ON_FAILURE)
+WebUI.delay(3)
+
+// إغلاق المتصفح
+WebUI.closeBrowser()

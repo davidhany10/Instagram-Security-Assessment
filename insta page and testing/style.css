@@ -1,0 +1,89 @@
+/* تحسين شكل الأزرار */
+.follow-btn, .follow-btn.unfollow {
+  background-color: #3897f0;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.follow-btn:hover, .follow-btn.unfollow:hover {
+  background-color: #0066cc;
+}
+
+.follow-btn.unfollow {
+  background-color: #ff5c5c;
+}
+
+.follow-btn.unfollow:hover {
+  background-color: #e04b4b;
+}
+
+input[type="submit"] {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+  transform: scale(1.1);
+}
+
+/* تحسين ترتيب الكومنتات */
+.comments-section p {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.comments-section strong {
+  color: #3897f0;
+  font-weight: 600;
+}
+
+.comments-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* تحسين عرض الكومنتات مع إضافة خط فاصل */
+.comments-section {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 15px;
+}
+
+/* تحسين ترتيب اللايكات */
+.likes {
+  font-weight: bold;
+  font-size: 14px;
+  margin-left: 10px;
+  color: #666;
+}
+
+.likes span {
+  margin-left: 5px;
+  color: #3897f0;
+}
+
+/* تحسين عرض زر اللايك */
+.actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.actions input[type="submit"] {
+  font-size: 20px;
+  padding: 0;
+  color: #3897f0;
+  transition: transform 0.2s ease;
+}
+
+.actions input[type="submit"]:hover {
+  transform: scale(1.2);
+}

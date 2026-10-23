@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Stories</h1>
+    {% for story in stories %}
+        <div>
+            <img src="{{ story.image_url }}" alt="Story Image">
+            <p>{{ story.caption }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

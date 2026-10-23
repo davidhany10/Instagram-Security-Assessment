@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Post</title>
+</head>
+<body>
+    <h2>Add New Post</h2>
+    <form action="/add_post" method="POST">
+        <label for="image_url">Image URL:</label>
+        <input type="text" name="image_url" required><br><br>
+
+        <label for="caption">Caption:</label>
+        <textarea name="caption" required></textarea><br><br>
+
+        <input type="submit" value="Add Post">
+    </form>
+    <p><a href="/home">Go to Home</a></p>
+</body>
+</html>
